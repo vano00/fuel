@@ -1,0 +1,48 @@
+<h2>Viewing #{{ job.id }}</h2>
+
+<p>
+	<strong>Title:</strong>
+	{{ job.title }}</p>
+<p>
+	<strong>Intro:</strong>
+	{{ job.intro }}</p>
+<p>
+	<strong>Overview:</strong>
+	{{ job.overview }}</p>
+<p>
+	<strong>Main tasks:</strong>
+	{{ job.main_tasks }}</p>
+<p>
+	<strong>Profile:</strong>
+	{{ job.profile }}</p>
+<p>
+	<strong>We offer:</strong>
+	{{ job.we_offer }}</p>
+<p>
+	<strong>Place of work:</strong>
+	{{ job.place_of_work }}</p>
+<p>
+	<strong>Start date:</strong>
+	{{ job.start_date }}</p>
+<p>
+	<strong>Type of contract:</strong>
+	{{ job.type_of_contract }}</p>
+<p>
+	<strong>Activity rate:</strong>
+	{{ job.activity_rate }}</p>
+<p>
+	<strong>Reference:</strong>
+	{{ job.reference }}</p>
+<p>
+	<strong>More info:</strong>
+	{{ job.more_info }}</p>
+<p>
+	<strong>Open:</strong>
+	{% if job.open == 1 %}Yes{% else %}No{% endif %}
+</p>
+<p>
+	{% if auth %}  
+	{{ html_anchor('admin/job/edit/' ~ job.id ~ '', 'Edit') }} |
+	{% endif %}
+	{{ html_anchor('' ~ actions.back.url ~ '','' ~ actions.back.label ~ '') }}
+</p>

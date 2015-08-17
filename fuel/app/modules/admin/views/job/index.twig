@@ -1,0 +1,43 @@
+<h2>Listing Jobs</h2>
+<br>
+{% if jobs %}
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Place of work</th>
+			<th>Start date</th>
+			<th>Type of contract</th>
+			<th>Activity rate</th>
+			<th>Reference</th>
+			<th>Open</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+{% for job in jobs %}			
+		<tr>
+
+			<td>{{ job.title }}</td>
+			<td>{{ job.place_of_work }}</td>
+			<td>{{ job.start_date }}</td>
+			<td>{{ job.type_of_contract }}</td>
+			<td>{{ job.activity_rate }}</td>
+			<td>{{ job.reference }}</td>
+			<td>{% if job.open == 1 %}Yes{% else %}No{% endif %}</td>
+			<td>
+				{{ html_anchor('admin/job/view/' ~ job.id ~ '', 'View') }} |
+				{{ html_anchor('admin/job/edit/' ~ job.id ~ '', 'Edit') }} |
+				{{ html_anchor('admin/job/delete/' ~ job.id ~ '', 'Delete', {'onclick':"return confirm('Are you sure to delete this job?')"}) }}
+			</td>
+		</tr>
+{% endfor %}	
+	</tbody>
+</table>
+
+{% else %}
+	<p>No jobs.</p>
+{% endif %}
+	<p>
+		{{ html_anchor('admin/job/create/', 'Add new job', {'class':'btn btn-success'}) }}
+	</p>

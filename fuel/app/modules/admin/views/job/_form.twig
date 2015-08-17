@@ -1,0 +1,87 @@
+{{ form_open({'class' : 'form-horizontal'}) }}
+
+	<fieldset>
+		<div class="form-group">
+			{{ form_label('Title', 'title', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-6">
+				{{ form_input('title', input_post('title', job ? job.title : ''), {'class':'form-control', 'placeholder':'Title'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Intro', 'intro', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-6">
+				{{ form_textarea('intro', input_post('intro', job ? job.intro : ''), {'class':'col-md-8 form-control', 'placeholder':'Intro'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Overview', 'overview', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-6">
+				{{ form_textarea('overview', input_post('overview', job ? job.overview : ''), {'class':'col-md-8 form-control', 'placeholder':'Overview'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Main tasks', 'main_tasks', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-6">
+				{{ form_textarea('main_tasks', input_post('main_tasks', job ? job.main_tasks : ''), {'class':'col-md-8 form-control', 'placeholder':'Main tasks'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Profile', 'profile', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-6">
+				{{ form_textarea('profile', input_post('profile', job ? job.profile : ''), {'class':'col-md-8 form-control', 'placeholder':'Profile'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('We offer', 'we_offer', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-6">
+				{{ form_textarea('we_offer', input_post('we_offer', job ? job.we_offer : ''), {'class':'col-md-8 form-control', 'placeholder':'We offer'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Place of work', 'place_of_work', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-3">
+				{{ form_input('place_of_work', input_post('place_of_work', job ? job.place_of_work : ''), {'class':'col-md-4 form-control', 'placeholder':'Place of work'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Start date', 'start_date', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-3">
+				{{ form_input('start_date', input_post('start_date', job ? job.start_date : ''), {'class':'col-md-4 form-control', 'placeholder':'Start date'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Type of contract', 'type_of_contract', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-3">
+				{{ form_input('type_of_contract', input_post('type_of_contract', job ? job.type_of_contract : ''), {'class':'col-md-4 form-control', 'placeholder':'Type of contract'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Activity rate', 'activity_rate', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-3">
+				{{ form_input('activity_rate', input_post('activity_rate', job ? job.activity_rate : ''), {'class':'col-md-4 form-control', 'placeholder':'Activity rate'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Reference', 'reference', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-3">
+				{{ form_input('reference', input_post('reference', job ? job.reference : ''), {'class':'col-md-4 form-control', 'placeholder':'Reference'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('More info', 'more_info', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-6">
+				{{ form_textarea('more_info', input_post('more_info', job ? job.more_info : ''), {'class':'col-md-8 form-control', 'placeholder':'More info'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label('Open', 'open', {'class':'control-label col-sm-2'}) }}
+			<div class="col-sm-2">
+				{{ form_select('open', input_post('open', job ? job.open : ''), { 0: 'No', 1: 'Yes' }, {'class':'col-md-4 form-control'}) }}
+			</div>
+		</div>
+		<div class="form-group">
+			<label class='control-label'>&nbsp;</label>
+			{{ form_submit('submit', 'Save', {'class':'btn btn-primary'}) }}
+		</div>
+	</fieldset>
+{{ form_close() }}

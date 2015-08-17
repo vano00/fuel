@@ -1,0 +1,7 @@
+<h2>Editing Job</h2>
+<br>
+{{ include('_form.twig') }}
+<p>
+	{{ html_anchor('' ~ actions.view.url ~ '/' ~ job.id ~ '', '' ~ actions.view.label ~ '') }} |
+	{{ html_anchor('' ~ actions.back.url ~ '','' ~ actions.back.label ~ '') }}
+

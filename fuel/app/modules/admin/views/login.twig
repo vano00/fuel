@@ -1,0 +1,24 @@
+<h2>Login</h2>
+<div class="row">
+	<div class="col-md-3">
+		{{ form_open() }}
+
+		{% if login_error %}
+				<p class="text-danger">{{ login_error }}</p>
+		{% endif %}
+
+		<div class="form-group">
+			{{ form_label('Email or Username:', 'username') }}
+			{{ form_input('username', input_post('username'), {'class':'form-control', 'placeholder':'Email or Username', 'autofocus':'autofocus'}) }}
+		</div>
+		<div class="form-group">
+			{{ form_label('Password:', 'password') }}
+			{{ form_password('password', null, {'class':'form-control', 'placeholder':'Password'}) }}
+		</div>
+		<div class="actions">
+			{{ form_submit('submit', 'Login', {'class':'btn btn-lg btn-primary btn-block'}) }}
+		</div>	
+
+		{{ form_close() }}
+	</div>
+</div>
