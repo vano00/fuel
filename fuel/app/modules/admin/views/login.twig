@@ -1,12 +1,10 @@
 <h2>Login</h2>
 <div class="row">
+	{{ form_open() }}
 	<div class="col-md-3">
-		{{ form_open() }}
-
-		{% if login_error %}
-				<p class="text-danger">{{ login_error }}</p>
+		{% if message %}
+			<p class="text-{{ message.type }}">{{ message.message }}</p>
 		{% endif %}
-
 		<div class="form-group">
 			{{ form_label('Email or Username:', 'username') }}
 			{{ form_input('username', input_post('username'), {'class':'form-control', 'placeholder':'Email or Username', 'autofocus':'autofocus'}) }}
@@ -18,7 +16,13 @@
 		<div class="actions">
 			{{ form_submit('submit', 'Login', {'class':'btn btn-lg btn-primary btn-block'}) }}
 		</div>	
-
-		{{ form_close() }}
+	</div>
+	{{ form_close() }}
+</div>
+<br>
+<div class="row">
+	<div class="col-md-12">
+		<p><a href="auth/create_account"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Create an account</a></p>
+		<!--<p><a href="auth/pwd_recovery"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> I forgot my password</a></p>-->
 	</div>
 </div>

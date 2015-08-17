@@ -15,7 +15,7 @@
 		</tr>
 	</thead>
 	<tbody>
-{% for job in jobs %}			
+{% for job in jobs if job.open == 1 %}			
 		<tr>
 			<td>{{ job.title }}</td>
 			<td>{{ job.place_of_work }}</td>
@@ -23,7 +23,6 @@
 			<td>{{ job.type_of_contract }}</td>
 			<td>{{ job.activity_rate }}</td>
 			<td>{{ job.reference }}</td>
-			<td>{% if job.open == 1 %}Yes{% else %}No{% endif %}</td>
 			<td>
 				{{ html_anchor('job/view/' ~ job.id ~ '', 'View') }}
 			</td>

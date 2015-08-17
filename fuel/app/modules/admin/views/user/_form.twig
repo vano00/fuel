@@ -1,0 +1,33 @@
+{% if message.text is iterable %}
+	{% for text in message.text %}
+		<p class="text-{{ message.type }}">{{ text }}</p>
+	{% endfor %}
+{% elseif message %}
+	<p class="text-{{ message.type }}">{{ message.text }}</p>
+{% endif %}
+<div class="row">
+	{{ form_open() }}
+	<div class="col-md-3">
+		<div class="form-group">
+			{{ form_label('Fullname', 'fullname', {'class':'control-label'}) }}
+			{{ form_input('fullname', input_post('fullname', user ? user.name : ''), {'class':'form-control', 'placeholder':'Fullname'}) }}
+		</div>
+		<div class="form-group">
+			{{ form_label('Username', 'username', {'class':'control-label'}) }}
+			{{ form_input('username', input_post('username', user ? user.name : ''), {'class':'form-control', 'placeholder':'Username'}) }}
+		</div>
+		<div class="form-group">
+			{{ form_label('Password', 'password', {'class':'control-label'}) }}
+			{{ form_password('password', input_post('password', job ? user.password : ''), {'class':'form-control', 'placeholder':'Password'}) }}
+		</div>
+		<div class="form-group">
+			{{ form_label('Email', 'email', {'class':'control-label'}) }}
+			{{ form_input('email', input_post('email', user ? user.email : ''), {'class':'form-control', 'placeholder':'email'}) }}
+		</div>
+		<div class="form-group">
+			<label class='control-label'>&nbsp;</label>
+			{{ form_submit('submit', 'Save', {'class':'form-control btn btn-primary'}) }}
+		</div>
+	</div>
+	{{ form_close() }}
+</div>
