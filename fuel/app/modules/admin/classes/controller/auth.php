@@ -24,10 +24,7 @@ class Controller_Auth extends \Controller_Template
 		            // Oops, no soup for you. Try to login again. Set some values to
 		            // repopulate the username field and give some error text back to the view.
 		            $data['username']    = $username;
-		            $data['message'] = [
-		            	'type' => 'danger',
-		            	'message' => 'Wrong username/password combo. Try again'
-		            	];
+		            \Session::set_flash('error', 'Wrong username/password combo. Try again');
 		        }
 		    }
 
@@ -61,10 +58,9 @@ class Controller_Auth extends \Controller_Template
 					    )
 					);
 
-					$data ['message'] = [
-		            	'type' => 'success',
-		            	'text' => 'The account has been successfully created'
-		            	];
+					\Session::set_flash('success', 'The account has been successfully created');
+					\Response::redirect('admin');
+
 		        }
 		        else
 		        {
@@ -72,10 +68,8 @@ class Controller_Auth extends \Controller_Template
 		            $data['fullname'] = $user['fullname'];
 		            $data['username'] = $user['username'];
 		            $data['email'] = $user['email'];
-		            $data['message'] = [
-		            	'type' => 'danger',
-		            	'text' => $val->error()
-		            	];
+
+		            \Session::set_flash('error', $val->error());
 		        }
 		    }
 

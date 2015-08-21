@@ -7,6 +7,8 @@ return array(
       'default' => 
       array(
         0 => '001_create_jobs',
+        1 => '002_create_countries',
+        2 => '003_create_cities',
       ),
     ),
     'module' => 

@@ -40,7 +40,13 @@
 		<div class="form-group">
 			{{ form_label('Place of work', 'place_of_work', {'class':'control-label col-sm-2'}) }}
 			<div class="col-sm-3">
-				{{ form_input('place_of_work', input_post('place_of_work', job ? job.place_of_work : ''), {'class':'col-md-4 form-control', 'placeholder':'Place of work'}) }}
+				<select name="place_of_work" class="form-control" id="form_country_id">
+				{% if not job %}<option value="" selected disabled>Choose a city</option>{% endif %}
+				{% for city in cities %}
+					<option value="{{ city.id }}" {% if job.city_id == city.id %} selected {% endif %}>{{ city.name}}</option>
+				{% endfor %}
+				</select>
+			</select>
 			</div>
 		</div>
 		<div class="form-group">

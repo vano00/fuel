@@ -7,7 +7,7 @@ class Controller_Job extends Controller_Template
 	{
 		is_null($id) and Response::redirect('job');
 
-		$data['job'] = Model_Job::find_by_pk($id);
+		$data['job'] = \Model\Job::find($id);
 		$data['actions'] = [
 			'back' => [
 				'label' => 'Back',

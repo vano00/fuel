@@ -1,0 +1,31 @@
+<h2>Listing Countries</h2>
+<br>
+{% if countries %}
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+{% for country in countries %}
+<tr>
+
+			<td>{{ country.name }}</td>
+			<td>
+				{{ html_anchor('admin/country/edit/' ~ country.id ~ '', 'Edit') }} |
+				{{ html_anchor('admin/country/delete/' ~ country.id ~ '', 'Delete', {'onclick':"return confirm('Are you sure to delete this country?')"}) }}
+			</td>
+		</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+<p>No Countries.</p>
+
+{% endif %}
+<p>
+	{{ html_anchor('admin/country/create', 'Add new Country', {'class':'btn btn-success'}) }}
+</p>

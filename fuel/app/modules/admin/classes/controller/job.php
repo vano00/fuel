@@ -6,7 +6,8 @@ class Controller_Job extends \Admin\Controller_Admin
 
 	public function action_index()
 	{
-		$data['jobs'] = \Model_Job::find_all();
+		
+		$data['jobs'] = \Model\Job::query()->get();
 		$this->template->title = "Jobs";
 		$this->template->content = \View::forge('job/index.twig', $data);
 
@@ -16,7 +17,7 @@ class Controller_Job extends \Admin\Controller_Admin
 	{
 		is_null($id) and \Response::redirect('job');
 
-		$data['job'] = \Model_Job::find_by_pk($id);
+		$data['job'] = \Model\Job::find($id);
 		$data['actions'] = [
 			'back' => [
 				'label' => 'Back',
@@ -33,11 +34,11 @@ class Controller_Job extends \Admin\Controller_Admin
 	{
 		if (\Input::method() == 'POST')
 		{
-			$val = \Model_Job::validate('create');
+			$val = \Model\Job::validate('create');
 
 			if ($val->run())
 			{
-				$job = \Model_Job::forge(array(
+				$job = \Model\Job::forge(array(
 					'title' => \Input::post('title'),
 					'intro' => \Input::post('intro'),
 					'overview' => \Input::post('overview'),
@@ -75,7 +76,7 @@ class Controller_Job extends \Admin\Controller_Admin
 				'url' => 'admin/job'
 			]
 		];
-
+		$data['cities'] = \Model\City::query()->get();
 		$this->template->title = "Jobs";
 		$this->template->content = \View::forge('job/create.twig', $data);
 
@@ -85,11 +86,11 @@ class Controller_Job extends \Admin\Controller_Admin
 	{
 		is_null($id) and \Response::redirect('job');
 
-		$job = \Model_Job::find_one_by_id($id);
+		$job = \Model\Job::find($id);
 
 		if (\Input::method() == 'POST')
 		{
-			$val = \Model_Job::validate('edit');
+			$val = \Model\Job::validate('edit');
 
 			if ($val->run())
 			{
@@ -133,7 +134,7 @@ class Controller_Job extends \Admin\Controller_Admin
 				'url' => 'admin/job'
 			]
 		];
-
+		$data['cities'] = \Model\City::query()->get();
 		$this->template->set_global('job', $job, false);
 		$this->template->title = "Jobs";
 		$this->template->content = \View::forge('job/edit.twig', $data);
@@ -142,7 +143,7 @@ class Controller_Job extends \Admin\Controller_Admin
 
 	public function action_delete($id = null)
 	{
-		if ($job = \Model_Job::find_one_by_id($id))
+		if ($job = \Model\Job::find($id))
 		{
 			$job->delete();
 

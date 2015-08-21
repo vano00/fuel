@@ -1,0 +1,23 @@
+<div class="row">
+	{{ form_open() }}
+	<div class="col-md-3">
+		<div class="form-group">
+			{{ form_label('Name', 'name', {'class':'control-label'}) }}
+			{{ form_input('name', input_post('name', city ? city.name : ''), {'class':'form-control', 'placeholder':'Name'}) }}
+		</div>
+		<div class="form-group">
+			{{ form_label('Country', 'country_id', {'class':'control-label'}) }}
+			<select name="country_id" class="form-control" id="form_country_id">
+				{% if not city %}<option value="" selected disabled>Choose a country</option>{% endif %}
+			{% for country in countries %}
+				<option value="{{ country.id }}" {% if city.country_id == country.id %} selected {% endif %}>{{ country.name }}</option>
+			{% endfor %}
+			</select>
+		</div>
+		<div class="form-group">
+			<label class='control-label'>&nbsp;</label>
+			{{ form_submit('submit', 'Save', {'class':'form-control btn btn-primary'}) }}
+		</div>
+	</div>
+	{{ form_close() }}
+</div>

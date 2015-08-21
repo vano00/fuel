@@ -24,10 +24,15 @@
           <a class="navbar-brand" href="/">ESL Jobs</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
-        {% if auth %}       
+        {% if auth %}   
+          <ul class="nav navbar-nav">
+            <li>{{ html_anchor('admin/job', 'Jobs') }}</li>
+            <li>{{ html_anchor('admin/country', 'Countries') }}</li>
+            <li>{{ html_anchor('admin/city', 'Cities') }}</li>
+          </ul>    
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ auth.user.screen_name }} <b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ auth.user.screen_name|capitalize }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li>{{ html_anchor('admin', 'Admin') }}</li>
                 <li>{{ html_anchor('admin/logout', 'Logout') }}</li>
@@ -45,7 +50,8 @@
 
     <!-- Begin page content -->
     <div class="container">
-     {{ content }}
+    {% include 'message.twig' %}
+    {{ content }}
     </div>
 
     <footer class="footer">

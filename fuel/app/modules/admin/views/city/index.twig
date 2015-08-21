@@ -1,0 +1,32 @@
+<h2>Listing Cities</h2>
+<br>
+{% if cities %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>City</th>
+				<th>Country</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+	{% for city in cities %}
+	<tr>
+
+				<td>{{ city.name }}</td>
+				<td>{{ city.t_country.name }}</td>
+				<td>
+					{{ html_anchor('admin/city/edit/' ~ city.id ~ '', 'Edit') }} |
+					{{ html_anchor('admin/city/delete/' ~ city.id ~ '', 'Delete', {'onclick':"return confirm('Are you sure to delete this city?')"}) }}
+				</td>
+			</tr>
+	{% endfor %}
+	</tbody>
+	</table>
+
+	{% else %}
+	<p>No city.</p>
+{% endif %}
+<p>
+	{{ html_anchor('admin/city/create', 'Add new city', {'class':'btn btn-success'}) }}
+</p>

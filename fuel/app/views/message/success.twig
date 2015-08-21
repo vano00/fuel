@@ -1,0 +1,14 @@
+{% set success = session_get_flash('success') %}
+{% if success is not empty %}
+	<div class="alert alert-success alert-dismissible">
+	 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<h4>Success!</h4>
+	{% if success is iterable %}
+		{% for text in success %}
+			{{ text }}
+		{% endfor %}
+	{% else %}
+		{{ success }}
+	{% endif %}
+	</div>
+{% endif %}
