@@ -23,7 +23,7 @@
 			<td>{{ job.start_date }}</td>
 			<td>{{ job.type_of_contract }}</td>
 			<td>{{ job.activity_rate }}</td>
-			<td>{{ job.reference }}</td>
+			<td>{% if job.reference %}{{ job.reference }}{% else %}No reference{% endif %}</td>
 			<td>{% if job.open == 1 %}Yes{% else %}No{% endif %}</td>
 			<td>
 				{{ html_anchor('admin/job/view/' ~ job.id ~ '', 'View') }} |

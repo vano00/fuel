@@ -10,31 +10,31 @@
 		<div class="form-group">
 			{{ form_label('Intro', 'intro', {'class':'control-label col-sm-2'}) }}
 			<div class="col-sm-6">
-				{{ form_textarea('intro', input_post('intro', job ? job.intro : ''), {'class':'col-md-8 form-control', 'placeholder':'Intro'}) }}
+				{{ form_textarea('intro', input_post('intro', job ? job.intro : ''), {'class':'col-md-8 form-control wysiwyg', 'placeholder':'Intro'}) }}
 			</div>
 		</div>
 		<div class="form-group">
 			{{ form_label('Overview', 'overview', {'class':'control-label col-sm-2'}) }}
 			<div class="col-sm-6">
-				{{ form_textarea('overview', input_post('overview', job ? job.overview : ''), {'class':'col-md-8 form-control', 'placeholder':'Overview'}) }}
+				{{ form_textarea('overview', input_post('overview', job ? job.overview : ''), {'class':'col-md-8 form-control wysiwyg', 'placeholder':'Overview'}) }}
 			</div>
 		</div>
 		<div class="form-group">
 			{{ form_label('Main tasks', 'main_tasks', {'class':'control-label col-sm-2'}) }}
 			<div class="col-sm-6">
-				{{ form_textarea('main_tasks', input_post('main_tasks', job ? job.main_tasks : ''), {'class':'col-md-8 form-control', 'placeholder':'Main tasks'}) }}
+				{{ form_textarea('main_tasks', input_post('main_tasks', job ? job.main_tasks : ''), {'class':'col-md-8 form-control wysiwyg', 'placeholder':'Main tasks'}) }}
 			</div>
 		</div>
 		<div class="form-group">
 			{{ form_label('Profile', 'profile', {'class':'control-label col-sm-2'}) }}
 			<div class="col-sm-6">
-				{{ form_textarea('profile', input_post('profile', job ? job.profile : ''), {'class':'col-md-8 form-control', 'placeholder':'Profile'}) }}
+				{{ form_textarea('profile', input_post('profile', job ? job.profile : ''), {'class':'col-md-8 form-control wysiwyg', 'placeholder':'Profile'}) }}
 			</div>
 		</div>
 		<div class="form-group">
 			{{ form_label('We offer', 'we_offer', {'class':'control-label col-sm-2'}) }}
 			<div class="col-sm-6">
-				{{ form_textarea('we_offer', input_post('we_offer', job ? job.we_offer : ''), {'class':'col-md-8 form-control', 'placeholder':'We offer'}) }}
+				{{ form_textarea('we_offer', input_post('we_offer', job ? job.we_offer : ''), {'class':'col-md-8 form-control wysiwyg', 'placeholder':'We offer'}) }}
 			</div>
 		</div>
 		<div class="form-group">
@@ -43,7 +43,7 @@
 				<select name="place_of_work" class="form-control" id="form_country_id">
 				{% if not job %}<option value="" selected disabled>Choose a city</option>{% endif %}
 				{% for city in cities %}
-					<option value="{{ city.id }}" {% if job.city_id == city.id %} selected {% endif %}>{{ city.name}}</option>
+					<option value="{{ city.id }}" {% if job.place_of_work == city.id %} selected {% endif %}>{{ city.name}}</option>
 				{% endfor %}
 				</select>
 			</select>
@@ -76,7 +76,7 @@
 		<div class="form-group">
 			{{ form_label('More info', 'more_info', {'class':'control-label col-sm-2'}) }}
 			<div class="col-sm-6">
-				{{ form_textarea('more_info', input_post('more_info', job ? job.more_info : ''), {'class':'col-md-8 form-control', 'placeholder':'More info'}) }}
+				{{ form_textarea('more_info', input_post('more_info', job ? job.more_info : ''), {'class':'col-md-8 form-control wysiwyg', 'placeholder':'More info'}) }}
 			</div>
 		</div>
 		<div class="form-group">

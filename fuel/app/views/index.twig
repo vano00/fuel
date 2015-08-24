@@ -1,35 +1,37 @@
-<h2>Listing Jobs</h2>
+<h2>Work for ESL</h2>
 <br>
 {% if jobs %}
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Place of work</th>
-			<th>Start date</th>
-			<th>Type of contract</th>
-			<th>Activity rate</th>
-			<th>Reference</th>
-			<th>Open</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-{% for job in jobs if job.open == 1 %}			
-		<tr>
-			<td>{{ job.title }}</td>
-			<td>{{ job.t_city.name }}</td>
-			<td>{{ job.start_date }}</td>
-			<td>{{ job.type_of_contract }}</td>
-			<td>{{ job.activity_rate }}</td>
-			<td>{{ job.reference }}</td>
-			<td>
-				{{ html_anchor('job/view/' ~ job.id ~ '', 'View') }}
-			</td>
-		</tr>
-{% endfor %}	
-	</tbody>
-</table>
+We are currently looking for people who wish to join our team! If you are interested in any of the positions advertised below, please send us your CV and cover letter to: <a href="mailto:jobs@esl.ch">jobs@esl.ch</a>
+{% for job in jobs if job.open == 1 %}
+	{% set country_id = job.t_city.t_country.id %}
+	<h2>{{ job.t_city.t_country.name }}</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th class="col-md-4">Title</th>
+				<th>Place of work</th>
+				<th>Start date</th>
+				<th>Type of contract</th>
+				<th>Activity rate</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+	{% for job in jobs if job.open == 1 and job.t_city.country_id == country_id %}			
+			<tr>
+				<td>{{ job.title }}</td>
+				<td>{{ job.t_city.name }}</td>
+				<td>{{ job.start_date }}</td>
+				<td>{{ job.type_of_contract }}</td>
+				<td>{{ job.activity_rate }}</td>
+				<td>
+					{{ html_anchor('job/view/' ~ job.id ~ '', 'View') }}
+				</td>
+			</tr>
+	{% endfor %}	
+		</tbody>
+	</table>
+{% endfor %}
 
 {% else %}
 	<p>No jobs.</p>

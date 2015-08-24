@@ -41,7 +41,7 @@
           </ul>
         {% else %}
           <ul class="nav navbar-nav">
-            <li>{{ html_anchor('admin/login', 'Admin') }}</li>
+            <li>{{ html_anchor('admin', 'Admin') }}</li>
           </ul>
         {% endif %}
         </div>
@@ -60,8 +60,16 @@
         	<small>Version: {{ fuel_version() }}</small><span class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</span><p>
       </div>
     </footer>
-	{% set js = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'bootstrap.js' ] %}
-	{{ asset_js(js) }} 
+	{% set js = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'bootstrap.js', 'tinymce/tinymce.min.js' ] %}
+	{{ asset_js(js) }}
+  <script>
+    // Transforms textareas with the wysiwyg class to wysiwygs
+     tinymce.init({
+      selector:'textarea.wysiwyg',
+      plugins: "link",
+      menubar: false,
+      toolbar: "removeformat | bold italic | bullist numlist | link unlink"});
+  </script>
   </body>
 </html>
 

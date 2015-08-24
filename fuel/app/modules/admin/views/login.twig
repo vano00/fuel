@@ -13,6 +13,10 @@
 			{{ form_label('Password:', 'password') }}
 			{{ form_password('password', null, {'class':'form-control', 'placeholder':'Password'}) }}
 		</div>
+		<div class="checkbox">
+			{{ form_checkbox('remember_me', 'Remember Me') }}
+			{{ form_label('Remember me', 'remember_me') }}
+		</div>
 		<div class="actions">
 			{{ form_submit('submit', 'Login', {'class':'btn btn-lg btn-primary btn-block'}) }}
 		</div>	
@@ -23,6 +27,6 @@
 <div class="row">
 	<div class="col-md-12">
 		<p><a href="auth/create_account"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Create an account</a></p>
-		<!--<p><a href="auth/pwd_recovery"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> I forgot my password</a></p>-->
+		<p><a href="">Forgot password?</a></p>
 	</div>
 </div>

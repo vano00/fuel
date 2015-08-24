@@ -115,7 +115,7 @@ class Controller_Job extends \Admin\Controller_Admin
 				}
 				else
 				{
-					\Session::set_flash('error', 'Nothing updated.');
+					\Session::set_flash('error', 'Could not update the job');
 				}
 			}
 			else

@@ -10,7 +10,6 @@ class Controller_Admin extends \Controller_Template
     {
         parent::before(); // Without this line, templating won't work!
 
-
         if (\Auth::check())
 		{
 			# Set user info

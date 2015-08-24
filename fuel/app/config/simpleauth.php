@@ -64,7 +64,7 @@ return array(
 		/**
 		 * Whether or not remember me functionality is enabled
 		 */
-		'enabled' => false,
+		'enabled' => true,
 
 		/**
 		 * Name of the cookie used to record this functionality
@@ -91,6 +91,9 @@ return array(
 		 * 50   => array('name' => 'Moderators', 'roles' => array('user', 'moderator')),
 		 * 100  => array('name' => 'Administrators', 'roles' => array('user', 'moderator', 'admin')),
 		 */
+		 0    => array('name' => 'Guests', 'roles' => array()),
+		 1    => array('name' => 'Users', 'roles' => array('user')),
+		 100  => array('name' => 'Administrators', 'roles' => array('user', 'moderator', 'admin')),
 	),
 
 	/**
@@ -103,6 +106,7 @@ return array(
 		 *
 		 * Regular example with role "user" given create & read rights on "comments":
 		 *   'user'  => array('comments' => array('create', 'read')),
+		 *
 		 * And similar additional rights for moderators:
 		 *   'moderator'  => array('comments' => array('update', 'delete')),
 		 *
@@ -115,6 +119,8 @@ return array(
 		 * Global allow by assigning true to a role (use with care!):
 		 *   'super' => true,
 		 */
+		 //'user'  => array('jobs' => array('read')),
+		 // 'admin'  => array('jobs' => array('read', 'create', 'modify', 'delete'))
 	),
 
 	/**

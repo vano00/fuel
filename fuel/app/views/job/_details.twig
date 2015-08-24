@@ -1,45 +1,38 @@
-<h2>Viewing #{{ job.id }}</h2>
-
+<h2>{{ job.title }}</h2>
 <p>
-	<strong>Title:</strong>
-	{{ job.title }}</p>
-<p>
-	<strong>Intro:</strong>
 	{{ job.intro }}</p>
 <p>
-	<strong>Overview:</strong>
+	<h3>Overview:</h3>
 	{{ job.overview }}</p>
 <p>
-	<strong>Main tasks:</strong>
+	<h3>Main tasks:</h3>
 	{{ job.main_tasks }}</p>
 <p>
-	<strong>Profile:</strong>
+	<h3>Profile:</h3>
 	{{ job.profile }}</p>
 <p>
-	<strong>We offer:</strong>
+	<h3>We offer:</h3>
 	{{ job.we_offer }}</p>
 <p>
-	<strong>Place of work:</strong>
-	{{ job.t_city.name }}</p>
+	<h3>Place of work:</h3>
+	{{ job.t_city.name }}, {{ job.t_city.t_country.name }}</p>
 <p>
-	<strong>Start date:</strong>
+	<h3>Start date:</h3>
 	{{ job.start_date }}</p>
 <p>
-	<strong>Type of contract:</strong>
+	<h3>Type of contract:</h3>
 	{{ job.type_of_contract }}</p>
 <p>
-	<strong>Activity rate:</strong>
+	<h3>Activity rate:</h3>
 	{{ job.activity_rate }}</p>
 <p>
-	<strong>Reference:</strong>
+	{% if job.reference %}
+	<h3>Reference:</h3>
 	{{ job.reference }}</p>
+	{% endif %}
 <p>
-	<strong>More info:</strong>
+	<h3>More info:</h3>
 	{{ job.more_info }}</p>
-<p>
-	<strong>Open:</strong>
-	{% if job.open == 1 %}Yes{% else %}No{% endif %}
-</p>
 <p>
 	{% if auth %}  
 	{{ html_anchor('admin/job/edit/' ~ job.id ~ '', 'Edit') }} |

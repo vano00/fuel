@@ -15,7 +15,7 @@ class Controller_Job extends Controller_Template
 			]
 		];
 
-		$this->template->title = "Job";
+		$this->template->title = "Jobs";
 		$this->template->content = View::forge('job/_details.twig', $data);
 
 	}

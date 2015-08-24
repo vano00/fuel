@@ -77,14 +77,14 @@ return array(
 	/**
 	 * Localization & internationalization settings
 	 */
-	// 'language'           => 'en', // Default language
-	// 'language_fallback'  => 'en', // Fallback language when file isn't available for default language
-	// 'locale'             => 'en_US', // PHP set_locale() setting, null to not set
+	'language'           => 'en', // Default language
+	'language_fallback'  => 'en', // Fallback language when file isn't available for default language
+	'locale'             => 'en_US', // PHP set_locale() setting, null to not set
 
 	/**
 	 * Internal string encoding charset
 	 */
-	// 'encoding'  => 'UTF-8',
+	'encoding'  => 'UTF-8',
 
 	/**
 	 * DateTime settings
@@ -144,7 +144,7 @@ return array(
 		 * WARNING: Using xss_clean will cause a performance hit.
 		 * How much is dependant on how much input data there is.
 		 */
-		// 'input_filter'  => array(),
+		'input_filter'  => array(),
 
 		/**
 		 * This output filter can be any normal PHP function as well as 'xss_clean'
@@ -152,22 +152,22 @@ return array(
 		 * WARNING: Using xss_clean will cause a performance hit.
 		 * How much is dependant on how much input data there is.
 		 */
-		'output_filter'  => array('Security::htmlentities'),
+		'output_filter'  => array('Security::xss_clean'),
 
 		/**
 		 * Encoding mechanism to use on htmlentities()
 		 */
-		// 'htmlentities_flags' => ENT_QUOTES,
+		'htmlentities_flags' => ENT_QUOTES,
 
 		/**
 		 * Wether to encode HTML entities as well
 		 */
-		// 'htmlentities_double_encode' => false,
+		'htmlentities_double_encode' => false,
 
 		/**
 		 * Whether to automatically filter view data
 		 */
-		// 'auto_filter_output'  => true,
+		'auto_filter_output'  => true,
 
 		/**
 		 * With output encoding switched on all objects passed will be converted to strings or
@@ -185,9 +185,9 @@ return array(
 	/**
 	 * Cookie settings
 	 */
-	// 'cookie' => array(
+	//'cookie' => array(
 		// Number of seconds before the cookie expires
-		// 'expiration'  => 0,
+		//'expiration'  => 5184000,
 		// Restrict the path that the cookie is available to
 		// 'path'        => '/',
 		// Restrict the domain that the cookie is available to
@@ -196,7 +196,7 @@ return array(
 		// 'secure'      => false,
 		// Only transmit cookies over HTTP, disabling Javascript access
 		// 'http_only'   => false,
-	// ),
+	//),
 
 	/**
 	 * Validation settings

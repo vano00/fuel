@@ -81,7 +81,7 @@ class Job extends \Orm\Model
 		$val->add_field('start_date', 'Start Date', 'required|max_length[255]');
 		$val->add_field('type_of_contract', 'Type Of Contract', 'required|max_length[255]');
 		$val->add_field('activity_rate', 'Activity Rate', 'required|max_length[255]');
-		$val->add_field('reference', 'Reference', 'required|max_length[255]');
+		$val->add_field('reference', 'Reference', 'max_length[255]');
 		$val->add_field('more_info', 'More Info', 'required');
 		$val->add_field('open', 'Open', 'required');
 

@@ -17,7 +17,20 @@ class Controller_Auth extends \Controller_Template
 
 		        if (\Auth::login($username,$password))
 		        {
-		            \Response::redirect('admin');
+
+		        	// does the user want to be remembered?
+			        if (\Input::post('remember_me'))
+			        {
+			            // create the remember-me cookie
+			            \Auth::remember_me();
+			        }
+			        else
+			        {
+			            // delete the remember-me cookie if present
+			            \Auth::dont_remember_me();
+			        }
+
+		            \Response::redirect_back('admin');
 		        }
 		        else
 		        {
@@ -87,6 +100,9 @@ class Controller_Auth extends \Controller_Template
 		public function action_logout()
 		{
 		    \Auth::logout();
+		    
+		    // delete the remember-me cookie if present
+			\Auth::dont_remember_me();
 
 		    \Response::redirect('/');
 		}
