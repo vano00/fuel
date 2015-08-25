@@ -120,7 +120,7 @@ return array(
 		 *   'super' => true,
 		 */
 		 //'user'  => array('jobs' => array('read')),
-		 // 'admin'  => array('jobs' => array('read', 'create', 'modify', 'delete'))
+		 //'admin'  => array('admin' => array('read'))
 	),
 
 	/**

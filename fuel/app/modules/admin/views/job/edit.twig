@@ -1,7 +1,9 @@
 <h2>Editing Job</h2>
 <br>
 {{ include('_form.twig') }}
+<hr>
 <p>
-	{{ html_anchor('' ~ actions.view.url ~ '/' ~ job.id ~ '', '' ~ actions.view.label ~ '') }} |
-	{{ html_anchor('' ~ actions.back.url ~ '','' ~ actions.back.label ~ '') }}
+	{{ html_anchor('' ~ actions.view.url ~ '/' ~ job.id ~ '', '' ~ actions.view.label ~ '',{'class':'btn btn-primary'}) }} |
+	{{ html_anchor('' ~ actions.back.url ~ '','' ~ actions.back.label ~ '',{'class':'btn btn-primary'}) }}
+</p>
 

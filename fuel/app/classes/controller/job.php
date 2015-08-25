@@ -1,5 +1,5 @@
 <?php
-class Controller_Job extends Controller_Template
+class Controller_Job extends Controller_Base
 {
 	public $template = 'template.twig';
 

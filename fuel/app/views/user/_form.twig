@@ -3,8 +3,9 @@
 	<div class="col-md-3">
 		<div class="form-group">
 			{{ form_label('Fullname', 'fullname', {'class':'control-label'}) }}
-			{{ form_input('fullname', input_post('fullname', user ? user.name : ''), {'class':'form-control', 'placeholder':'Fullname'}) }}
+			{{ form_input('fullname', input_post('fullname', user ? user.fullname : ''), {'class':'form-control', 'placeholder':'Fullname'}) }}
 		</div>
+		{% if not auth %}
 		<div class="form-group">
 			{{ form_label('Username', 'username', {'class':'control-label'}) }}
 			{{ form_input('username', input_post('username', user ? user.name : ''), {'class':'form-control', 'placeholder':'Username'}) }}
@@ -13,10 +14,21 @@
 			{{ form_label('Password', 'password', {'class':'control-label'}) }}
 			{{ form_password('password', input_post('password', job ? user.password : ''), {'class':'form-control', 'placeholder':'Password'}) }}
 		</div>
+		{% endif %}
 		<div class="form-group">
 			{{ form_label('Email', 'email', {'class':'control-label'}) }}
 			{{ form_input('email', input_post('email', user ? user.email : ''), {'class':'form-control', 'placeholder':'email'}) }}
 		</div>
+		{% if auth %}
+		<div class="form-group">
+			{{ form_label('New password', 'password', {'class':'control-label'}) }}
+			{{ form_password('password', input_post('password', job ? user.password : ''), {'class':'form-control', 'placeholder':'Password'}) }}
+		</div>
+		<div class="form-group">
+			{{ form_label('Old password', 'old_password', {'class':'control-label'}) }}
+			{{ form_password('old_password', input_post('ols_password', job ? user.old_password : ''), {'class':'form-control', 'placeholder':'Password'}) }}
+		</div>
+		{% endif %}
 		<div class="form-group">
 			<label class='control-label'>&nbsp;</label>
 			{{ form_submit('submit', 'Save', {'class':'form-control btn btn-primary'}) }}

@@ -1,5 +1,5 @@
 <?php
-class Controller_Index extends Controller_Template
+class Controller_Index extends Controller_Base
 {
 
 	public $template = 'template.twig';

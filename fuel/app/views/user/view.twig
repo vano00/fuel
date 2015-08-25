@@ -1,0 +1,8 @@
+<h2>{{ auth.user.screen_name|capitalize }}'s profil</h2>
+<h3>Fullname:</h3>
+<p>{{ user.details.fullname }}</p>
+<h3>Email:</h3>
+<p>{{ user.email }}</p>
+<hr>
+{{ html_anchor('user/edit/' ~ user.id ~ '', 'Edit',{'class':'btn btn-success'}) }} |
+{{ html_anchor('' ~ actions.back.url ~ '','' ~ actions.back.label ~ '',{'class':'btn btn-primary'}) }}

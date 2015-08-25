@@ -273,6 +273,7 @@ return array(
 			'parser',
 			'Auth',
 		 	'orm',
+		 	'email'
 		),
 
 		/**
