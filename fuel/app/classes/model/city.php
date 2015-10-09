@@ -36,6 +36,22 @@ class City extends \Orm\Model
 		'updated_at'
 	];
 
+	/**
+	 * @var array	defined observers
+	 */
+	protected static $_observers = array(
+		'Orm\\Observer_CreatedAt' => array(
+			'events' => array('before_insert'),
+			'property' => 'created_at',
+			'mysql_timestamp' => false,
+		),
+		'Orm\\Observer_UpdatedAt' => array(
+			'events' => array('before_update'),
+			'property' => 'updated_at',
+			'mysql_timestamp' => false,
+		)
+	);
+
 	protected static $_conditions = array(
         'order_by' => array('name' => 'asc')
     );
@@ -57,8 +73,8 @@ class City extends \Orm\Model
 			'model_to' => '\Model\Job',
 			'key_from' => 'id',
 			'key_to' => 'place_of_work',
-			'cascade_save' => true,
-			'cascade_delete' => true
+			'cascade_save' => false,
+			'cascade_delete' => false
 		]
 	];
 

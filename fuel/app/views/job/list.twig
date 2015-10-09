@@ -1,0 +1,34 @@
+<h2>My Saved jobs</h2>
+<br>
+{% if jobs %}
+Here is a liste of your saved jobs.
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th class="col-md-4">Title</th>
+			<th>Place of work</th>
+			<th>Start date</th>
+			<th>Type of contract</th>
+			<th>Activity rate</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for job in jobs %}
+		<tr>
+			<td>{{ job.title }}</td>
+			<td>{{ job.t_city.name }}</td>
+			<td>{{ job.start_date }}</td>
+			<td>{{ job.type_of_contract }}</td>
+			<td>{{ job.activity_rate }}</td>
+			<td>
+				{{ html_anchor('job/view/' ~ job.id ~ '', 'View') }}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% else %}
+	<p>No jobs.</p>
+{% endif %}

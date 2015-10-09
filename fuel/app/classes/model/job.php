@@ -12,12 +12,6 @@ class Job extends \Orm\Model
 {
 
 	/**
-	 * @var strings
-	 * The name of the database connection
-	 */
-	protected static $_connection = 'default';
-
-	/**
 	 * @var string
 	 * The name of the table. This name is specified because
 	 * we do not follow fuelPHP convention for naming database tables
@@ -48,6 +42,22 @@ class Job extends \Orm\Model
 	];
 
 	/**
+	 * @var array	defined observers
+	 */
+	protected static $_observers = array(
+		'Orm\\Observer_CreatedAt' => array(
+			'events' => array('before_insert'),
+			'property' => 'created_at',
+			'mysql_timestamp' => false,
+		),
+		'Orm\\Observer_UpdatedAt' => array(
+			'events' => array('before_update'),
+			'property' => 'updated_at',
+			'mysql_timestamp' => false,
+		)
+	);
+
+	/**
 	 * @var array
 	 * Defines the name of the Primary Key
 	 */
@@ -65,7 +75,20 @@ class Job extends \Orm\Model
 			'key_to' => 'id',
 			'cascade_save' => false,
 			'cascade_delete' => false
-		)
+		),
+	);
+
+	protected static $_many_many = array(
+	    'users' => array(
+	        'key_from' => 'id',
+	        'key_through_from' => 'job_id', // column 1 from the table in between, should match a job.id
+	        'table_through' => 't_favorite', // both models plural without prefix in alphabetical order
+	        'key_through_to' => 'user_id', // column 2 from the table in between, should match a users.id
+	        'model_to' => '\Auth\Model\Auth_User',
+	        'key_to' => 'id',
+	        'cascade_save' => false,
+	        'cascade_delete' => false,
+	    )
 	);
 
 	public static function validate($factory)
